@@ -26,8 +26,6 @@ int main(int argc, char const *argv[]) {
   int eleone,eletwo,elethree,elefour,elefive;
 
 
-
-  //begin
   printf("%s\n","Please input ISBN code" );
   scanf("%s",inp );
   len = strlen(inp);
@@ -87,7 +85,28 @@ int main(int argc, char const *argv[]) {
                       printf("%s\n","Invalid ISBN, Fifth element must be 1 digit" );
                       } else {
                         //VALIDATION test
-                        
+                        //printf("%s\n",inpnum );
+                        int order,totalval;
+                        int inpnumbers;
+                        sscanf(inpnum, "%d", &inpnumbers);
+
+                        for (i = 1; i < 14; i++) {
+                            order = inpnumbers % 10;
+                            inpnumbers = inpnumbers / 10;
+                            if (i%2==1) {
+                                totalval =+ order;
+                            } else {
+                                totalval =+ order*3;
+                            }
+                                if (totalval%10 == 0) {
+                                printf("%s\n","Failed Validation Test, Invalid ISBN" );
+                                break;
+                                } else {
+                                printf("%s\n","Valid ISBN" );
+                                break;
+                            }
+                        }
+
                     }
                   }
                 }
@@ -102,7 +121,8 @@ int main(int argc, char const *argv[]) {
 //978-1-12345678-1-1    CANT TEST ELEMENT 3 BUT IT SHOULD WORK
 //978-1-1-1234567-1   element 4  test
 //978-1234-123-1-41   element 5 test
-//978-0-13-376131-3 FINAL TEST
+//978-0-13-376131-3 VALID FINAL TEST
+//978-0-13-376131-2 INVALID FINAL Test
 }
   return 0;
 }
